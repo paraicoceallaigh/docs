@@ -47,6 +47,14 @@ The `minlevel` attribute is most useful for configuring the logging level. Chang
 The Octopus process will automatically switch to the new logging level as soon as the file is saved.
 
 :::warning
+As of version 2022.3 (Build 10405) refactoring changes to the logging mean you need to set an OS user level environment variable to your windows server to enable TRACE logging to find its way to the nlog file: 
+```xml
+OCTOPUS__Logging__File__LogEventLevel=Verbose
+```
+A service restart of the Octopus Server will be required for this to update.
+:::
+
+:::warning
 **Don&#39;t forget to reset your changes**
 Leaving your `minlevel` too low will impact the performance of Octopus Server. We recommend resetting back to the default logging configuration once you have completed your diagnostics session.
 :::
